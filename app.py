@@ -171,7 +171,8 @@ with col2:
         if "✔" in str(val): return 'background-color: #d4edda; color: #155724;'
         return ''
         
-    styled_df = df.style.applymap(style_status, subset=['状态'])
+    # 这里已经彻底修正为新版 Pandas 支持的 .map 语法
+    styled_df = df.style.map(style_status, subset=['状态'])
     
     # 输出可视化看板
     st.dataframe(styled_df, use_container_width=True, hide_index=True)
